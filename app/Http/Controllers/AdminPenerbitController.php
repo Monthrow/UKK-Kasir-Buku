@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Kategori;
+use App\Models\Penerbit;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 
-class AdminKategoriController extends Controller
+class AdminPenerbitController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +14,9 @@ class AdminKategoriController extends Controller
     public function index()
     {
         $data= [
-            'title'   => 'Manajemen Kategori',
-            'kategori'=> Kategori::get(),
-            'content' => 'admin/kategori/index'
+            'title'   => 'Manajemen Penerbit',
+            'penerbit'=> Penerbit::get(),
+            'content' => 'admin/penerbit/index'
         ];
         return view('admin.layouts.wrapper', $data);
     }
@@ -27,8 +27,8 @@ class AdminKategoriController extends Controller
     public function create()
     {
         $data= [
-            'title'   => 'Tambah Kategori',
-            'content' => 'admin/kategori/create'
+            'title'   => 'Tambah Penerbit',
+            'content' => 'admin/penerbit/create'
         ];
         return view('admin.layouts.wrapper', $data);
     }
@@ -39,11 +39,11 @@ class AdminKategoriController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'name' => 'required|unique:kategoris'
+            'name' => 'required|unique:penerbits'
         ]);
-        Kategori::create($data);
+        Penerbit::create($data);
         Alert::success('Sukses', 'Data berhasil ditambahkan!!');
-        return redirect('/aplikasikasir/kategori')->with('success', 'Data berhasil ditambahkan!!');
+        return redirect('/aplikasikasir/penerbit')->with('success', 'Data berhasil ditambahkan!!');
     }
 
     /**
@@ -60,9 +60,9 @@ class AdminKategoriController extends Controller
     public function edit(string $id)
     {
         $data= [
-            'title'   => 'Tambah Kategori',
-            'kategori'=> Kategori::find($id),
-            'content' => 'admin/kategori/create'
+            'title'   => 'Tambah Penerbit',
+            'penerbit'=> Penerbit::find($id),
+            'content' => 'admin/penerbit/create'
         ];
         return view('admin.layouts.wrapper', $data);
     }
@@ -72,13 +72,13 @@ class AdminKategoriController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $kategori = Kategori::find($id);
+        $penerbit = Penerbit::find($id);
         $data = $request->validate([
-            'name' => 'required|unique:kategoris,name,' . $kategori->id
+            'name' => 'required|unique:penerbits,name,' . $penerbit->id
         ]);
-        $kategori->update($data);
+        $penerbit->update($data);
         Alert::success('Sukses', 'Data berhasil diedit!!');
-        return redirect('/aplikasikasir/kategori')->with('success', 'Data berhasil ditambahkan!!');
+        return redirect('/aplikasikasir/penerbit')->with('success', 'Data berhasil ditambahkan!!');
     }
 
     /**
@@ -86,8 +86,8 @@ class AdminKategoriController extends Controller
      */
     public function destroy(string $id)
     {
-        $kategori = Kategori::find($id);
-        $kategori->delete();
+        $penerbit = Penerbit::find($id);
+        $penerbit->delete();
         Alert::success('Sukses', 'Data berhasil dihapus!!');
         return redirect()->back();
     }

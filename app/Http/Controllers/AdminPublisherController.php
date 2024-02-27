@@ -2,21 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Kategori;
+use App\Models\Publisher;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 
-class AdminKategoriController extends Controller
+class AdminPublisherController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         $data= [
-            'title'   => 'Manajemen Kategori',
-            'kategori'=> Kategori::get(),
-            'content' => 'admin/kategori/index'
+            'title'   => 'Manajemen Genre',
+            'publisher'=> Publisher::get(),
+            'content' => 'admin/genre/index'
         ];
         return view('admin.layouts.wrapper', $data);
     }
@@ -27,8 +24,8 @@ class AdminKategoriController extends Controller
     public function create()
     {
         $data= [
-            'title'   => 'Tambah Kategori',
-            'content' => 'admin/kategori/create'
+            'title'   => 'Tambah Genre',
+            'content' => 'admin/genre/create'
         ];
         return view('admin.layouts.wrapper', $data);
     }
@@ -39,11 +36,11 @@ class AdminKategoriController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'name' => 'required|unique:kategoris'
+            'name' => 'required|unique:publishers'
         ]);
-        Kategori::create($data);
+        Publisher::create($data);
         Alert::success('Sukses', 'Data berhasil ditambahkan!!');
-        return redirect('/aplikasikasir/kategori')->with('success', 'Data berhasil ditambahkan!!');
+        return redirect('/aplikasikasir/genre')->with('success', 'Data berhasil ditambahkan!!');
     }
 
     /**
@@ -60,9 +57,9 @@ class AdminKategoriController extends Controller
     public function edit(string $id)
     {
         $data= [
-            'title'   => 'Tambah Kategori',
-            'kategori'=> Kategori::find($id),
-            'content' => 'admin/kategori/create'
+            'title'   => 'Tambah Publisher',
+            'publisher'=> Publisher::find($id),
+            'content' => 'admin/genre/create'
         ];
         return view('admin.layouts.wrapper', $data);
     }
@@ -72,13 +69,13 @@ class AdminKategoriController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $kategori = Kategori::find($id);
+        $publisher = Publisher::find($id);
         $data = $request->validate([
-            'name' => 'required|unique:kategoris,name,' . $kategori->id
+            'name' => 'required|unique:publishers,name,' . $publisher->id
         ]);
-        $kategori->update($data);
+        $publisher->update($data);
         Alert::success('Sukses', 'Data berhasil diedit!!');
-        return redirect('/aplikasikasir/kategori')->with('success', 'Data berhasil ditambahkan!!');
+        return redirect('/aplikasikasir/genre')->with('success', 'Data berhasil ditambahkan!!');
     }
 
     /**
@@ -86,8 +83,8 @@ class AdminKategoriController extends Controller
      */
     public function destroy(string $id)
     {
-        $kategori = Kategori::find($id);
-        $kategori->delete();
+        $publisher = Publisher::find($id);
+        $publisher->delete();
         Alert::success('Sukses', 'Data berhasil dihapus!!');
         return redirect()->back();
     }

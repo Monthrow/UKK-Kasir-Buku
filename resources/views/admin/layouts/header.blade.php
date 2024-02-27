@@ -7,6 +7,7 @@
             <span class="navbar-toggler-icon"></span>
           </button>
           <h1 class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3">
+            <img src="https://e7.pngegg.com/pngimages/350/392/png-clipart-logo-bruntcliffe-academy-book-book-blue-angle.png" width="110" height="32" class="navbar-brand-image">
           <span class="brand-text font-weight-light">KASIR Progress</span>
           </h1>
           <div class="navbar-nav flex-row order-md-last">
@@ -27,7 +28,7 @@
               <a href="#" class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown" aria-label="Open user menu">
                 <span class="avatar avatar-sm" style="background-image: url(./static/avatars/000m.jpg)"></span>
                 <div class="d-none d-xl-block ps-2">
-                  <div>Paweł Kuna</div>
+                  <div>{{ auth()->user()->level }}</div>
                 </div>
               </a>
               <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">

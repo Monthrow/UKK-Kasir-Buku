@@ -20,8 +20,19 @@
       </div>
     </div>
     <!-- Libs JS -->
+    <script src="/vendor/jquery.min.js"></script>
+    <script src="/vendor/datatables/datatables.min.js"></script>
+    <script src="/vendor/datatables/Datatables-1.10.16/js/dataTables.bootstrap4.min.js"></script>
     <!-- Tabler Core -->
     <script src="/vendor/admin/dist/js/tabler.min.js?1692870487" defer></script>
     <script src="/vendor/admin/dist/js/demo.min.js?1692870487" defer></script>
+
+    @stack('script')
+
+    @if(session('berhasil'))
+    <script>
+      window.open("/aplikasikasir/transaksi/{{session('berhasil')}}/print")
+    </script>
+    @endif
   </body>
 </html>

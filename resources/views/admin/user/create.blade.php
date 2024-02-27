@@ -6,10 +6,10 @@
                     <h2><b>Tambah Data</b></h2>
 
                     @isset($user)
-                        <form action="/admin/user/{{ $user->id }}" method="POST">
+                        <form action="/aplikasikasir/user/{{ $user->id }}" method="POST">
                             @method('put')
                     @else
-                    <form action="/admin/user" method="POST">
+                    <form action="/aplikasikasir/user" method="POST">
                     @endisset
                     
                         @csrf
@@ -37,7 +37,7 @@
 
                         <div class="form-group">
                             <label for="Level"><b>Level</b></label>
-                            <select class="custom-select" name="level" class="form-control @error('email') is-invalid @enderror">
+                            <select name="level" class="form-control @error('level') is-invalid @enderror">
                                 <option value="">Pilih Level...</option>
                                 <option value="Admin">Admin</option>
                                 <option value="Kasir">Kasir</option>
@@ -71,7 +71,7 @@
                             @enderror
                         </div>
 
-                        <a href="/admin/user" class="btn btn-secondary"><i class="fas fa-arrow-left"></i>Kembali</a>
+                        <a href="/aplikasikasir/user" class="btn btn-secondary"><i class="fas fa-arrow-left"></i>Kembali</a>
                         <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i>Simpan</button>
                     </form>
                 </div>

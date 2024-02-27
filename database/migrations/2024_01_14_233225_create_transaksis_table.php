@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('user_id');
             $table->bigInteger('total');
             $table->string('kasir_name')->nullable();
-            $table->enum('status', ['selesai', 'pending'])->default('pending');
+            $table->enum('status', ['Selesai', 'Pending'])->default('Pending');
             $table->timestamps();
         });
     }

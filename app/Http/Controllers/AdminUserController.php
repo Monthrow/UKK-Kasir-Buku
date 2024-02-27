@@ -41,7 +41,7 @@ class AdminUserController extends Controller
         $data= $request->validate([
             'name' => 'required',
             'email' => 'required|email|unique:users',
-            'password' => 'required',
+            'password' => 'required|min:5|regex:/[0-9]/|confirmed',
             'level' => 'required',
             're_password' => 'required|same:password',
         ]);
@@ -50,7 +50,7 @@ class AdminUserController extends Controller
 
         User::create($data);
         Alert::success('Sukses', 'Data berhasil ditambahkan!!');
-        return redirect('/admin/user')->with('success', 'Data berhasil ditambahkan!!');
+        return redirect('/aplikasikasir/user')->with('success', 'Data berhasil ditambahkan!!');
     }
 
     /**
@@ -95,7 +95,7 @@ class AdminUserController extends Controller
     
         $user->update($data);
         Alert::success('Sukses', 'Data berhasil diupdate!!');
-        return redirect('/admin/user')->with('success', 'Data berhasil diedit!!');
+        return redirect('/aplikasikasir/user')->with('success', 'Data berhasil diedit!!');
     }
 
     /**
@@ -106,6 +106,6 @@ class AdminUserController extends Controller
         $user = User::find($id);
         $user->delete();
         Alert::success('Sukses', 'Data berhasil dihapus!!');
-        return redirect('/admin/user')->with('success', 'Data berhasil dihapus!!');
+        return redirect('/aplikasikasir/user')->with('success', 'Data berhasil dihapus!!');
     }
 }

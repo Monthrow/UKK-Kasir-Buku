@@ -12,7 +12,7 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-    <title>Blank page - Tabler - Premium and Open Source dashboard template with responsive and high quality UI.</title>
+    <title>Kasir Progress</title>
     <!-- CSS files -->
     <link href="/vendor/admin1/plugins/fontawesome-free/css/all.min.css" rel="stylesheet">
     <link href="/vendor/admin/dist/css/tabler.min.css?1692870487" rel="stylesheet"/>
@@ -20,6 +20,9 @@
     <link href="/vendor/admin/dist/css/tabler-payments.min.css?1692870487" rel="stylesheet"/>
     <link href="/vendor/admin/dist/css/tabler-vendors.min.css?1692870487" rel="stylesheet"/>
     <link href="/vendor/admin/dist/css/demo.min.css?1692870487" rel="stylesheet"/>
+    <link href="/vendor/datatables/datatables.min.css" rel="stylesheet"/>
+    <link href="/vendor/datatables/Datatables-1.10.16/css/dataTables.bootstrap4.min.css" rel="stylesheet"/>
+    
     <style>
       @import url('https://rsms.me/inter/inter.css');
       :root {
